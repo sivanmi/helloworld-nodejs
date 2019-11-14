@@ -1,12 +1,12 @@
 pipeline {
-  agent any
+  agent { label "nodejs-app" }
   stages {
     stage('Build') {
-      container('nodejs') {
-        steps {
+      steps {
+        container ('nodejs') {
           sh 'npm install'
-        }
-      } 
+        } 
+      }
     }
     stage('Deploy') {
       steps {
