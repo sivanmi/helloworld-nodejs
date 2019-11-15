@@ -10,7 +10,9 @@ pipeline {
     }
     stage('BlackDuck') {
       steps {
-        synopsys_detect detectProperties: '', returnStatus: true
+        container ('synopsysdetect') {
+          synopsys_detect detectProperties: '', returnStatus: true
+        }
       }
     }
     stage('Deploy') {
