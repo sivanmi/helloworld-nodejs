@@ -8,6 +8,11 @@ pipeline {
         } 
       }
     }
+    stage('BlackDuck') {
+      steps {
+        synopsys_detect detectProperties: '', returnStatus: true
+      }
+    }
     stage('Deploy') {
       steps {
         pushToCloudFoundry(target: 'api.run.pivotal.io', organization: 'mith-org', cloudSpace: 'development', credentialsId: 'mithcf')
